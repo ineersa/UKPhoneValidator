@@ -12,7 +12,7 @@ Usage
 The following model code validates attribute in UKPhoneValidator:
 
 ~~~
-[php]
+
 public function rules()
 {
    return array(
