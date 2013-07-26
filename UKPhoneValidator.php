@@ -24,6 +24,11 @@ class UKPhoneValidator extends CValidator
 			$message=$this->message!==null?$this->message:Yii::t('yii','{attribute} is empty');
 			$this->addError($object,$attribute,$message);
 		}
+		// Don't allow country codes to be included (assumes a leading "+") 
+		if (preg_match('/^(\+)[\s]*(.*)$/',$value)) {
+		   $message=Yii::t('yii','{attribute} without the country code, please');
+		   $this->addError($object,$attribute,$message);
+		}		
 		// Now check that all the characters are digits
 	    if (!preg_match('/^[0-9]{10,11}$/',$value)) {
 	        $message=Yii::t('yii','{attribute} should contain 10 or 11 digits');
