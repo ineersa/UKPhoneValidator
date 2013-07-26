@@ -20,7 +20,7 @@ class UKPhoneValidator extends CValidator
 		$value=$object->$attribute;
 		if($this->allowEmpty && ($value===null || $value===''))
 			return true;
-		else {
+		elseif(!$this->allowEmpty && ($value===null || $value==='')) {
 			$message=$this->message!==null?$this->message:Yii::t('yii','{attribute} is empty');
 			$this->addError($object,$attribute,$message);
 		}
